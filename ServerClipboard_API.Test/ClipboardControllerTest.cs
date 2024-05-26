@@ -19,6 +19,10 @@ namespace ServerClipboard_API.Tests
             _controller = new ClipboardController(_cryptoMock.Object, _loggerMock.Object);
         }
 
+        //---------------------------------------------------------------------------
+        //Basic tests
+        //---------------------------------------------------------------------------
+        
         [Fact]
         public async Task PostClipBoard_ShouldEncryptContent()
         {
