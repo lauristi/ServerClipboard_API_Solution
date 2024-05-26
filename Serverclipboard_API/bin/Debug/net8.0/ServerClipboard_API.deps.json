@@ -9,10 +9,10 @@
       "ServerClipboard_API/1.0.0": {
         "dependencies": {
           "EPPlus": "7.1.2",
-          "EncryptionLib": "1.0.0",
           "MimeKit": "4.6.0",
           "Swashbuckle.AspNetCore": "6.6.2",
-          "Swashbuckle.AspNetCore.Annotations": "6.6.2"
+          "Swashbuckle.AspNetCore.Annotations": "6.6.2",
+          "EncryptionLib": "1.0.0.0"
         },
         "runtime": {
           "ServerClipboard_API.dll": {}
@@ -233,9 +233,12 @@
           "System.Text.Encodings.Web": "8.0.0"
         }
       },
-      "EncryptionLib/1.0.0": {
+      "EncryptionLib/1.0.0.0": {
         "runtime": {
-          "EncryptionLib.dll": {}
+          "EncryptionLib.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -449,8 +452,8 @@
       "path": "system.text.json/8.0.0",
       "hashPath": "system.text.json.8.0.0.nupkg.sha512"
     },
-    "EncryptionLib/1.0.0": {
-      "type": "project",
+    "EncryptionLib/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

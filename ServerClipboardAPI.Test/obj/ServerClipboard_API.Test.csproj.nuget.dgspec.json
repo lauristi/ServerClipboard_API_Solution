@@ -4,66 +4,6 @@
     "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboardAPI.Test\\ServerClipboard_API.Test.csproj": {}
   },
   "projects": {
-    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj",
-        "projectName": "EncryptionLib",
-        "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj",
-        "packagesPath": "C:\\Users\\sysdba\\.nuget\\packages\\",
-        "outputPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\sysdba\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboardAPI.Test\\ServerClipboard_API.Test.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -177,11 +117,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {
-              "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj": {
-                "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {

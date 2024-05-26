@@ -580,21 +580,23 @@
         }
       },
       "xunit.runner.visualstudio/2.8.1": {},
-      "EncryptionLib/1.0.0": {
-        "runtime": {
-          "EncryptionLib.dll": {}
-        }
-      },
       "ServerClipboard_API/1.0.0": {
         "dependencies": {
           "EPPlus": "7.1.2",
-          "EncryptionLib": "1.0.0",
           "MimeKit": "4.6.0",
           "Swashbuckle.AspNetCore": "6.6.2",
           "Swashbuckle.AspNetCore.Annotations": "6.6.2"
         },
         "runtime": {
           "ServerClipboard_API.dll": {}
+        }
+      },
+      "EncryptionLib/1.0.0.0": {
+        "runtime": {
+          "EncryptionLib.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -934,13 +936,13 @@
       "path": "xunit.runner.visualstudio/2.8.1",
       "hashPath": "xunit.runner.visualstudio.2.8.1.nupkg.sha512"
     },
-    "EncryptionLib/1.0.0": {
+    "ServerClipboard_API/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "ServerClipboard_API/1.0.0": {
-      "type": "project",
+    "EncryptionLib/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

@@ -18,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\EncryptionLib_Solution\EncryptionLib\EncryptionLib.csproj" />
+    <Reference Include="EncryptionLib">
+      <HintPath>Encryptionlib\EncryptionLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

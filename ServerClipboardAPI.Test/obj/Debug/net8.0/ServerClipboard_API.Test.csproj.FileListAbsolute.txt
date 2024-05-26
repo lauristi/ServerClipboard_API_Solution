@@ -250,3 +250,5 @@ D:\Projeto\MyRepository\lauristi\ServerClipboardProjects\ServerClipboard_API_Sol
 D:\Projeto\MyRepository\lauristi\ServerClipboardProjects\ServerClipboard_API_Solution\ServerClipboardAPI.Test\obj\Debug\net8.0\ServerClipboard_API.Test.pdb
 D:\Projeto\MyRepository\lauristi\ServerClipboardProjects\ServerClipboard_API_Solution\ServerClipboardAPI.Test\obj\Debug\net8.0\ServerClipboard_API.Test.genruntimeconfig.cache
 D:\Projeto\MyRepository\lauristi\ServerClipboardProjects\ServerClipboard_API_Solution\ServerClipboardAPI.Test\obj\Debug\net8.0\ref\ServerClipboard_API.Test.dll
+D:\Projeto\MyRepository\lauristi\ServerClipboardProjects\ServerClipboard_API_Solution\ServerClipboardAPI.Test\bin\Debug\net8.0\Encryptionlib\EncryptionLib.deps.json
+D:\Projeto\MyRepository\lauristi\ServerClipboardProjects\ServerClipboard_API_Solution\ServerClipboardAPI.Test\obj\Debug\net8.0\ServerClipboard_API.Test.sourcelink.json
