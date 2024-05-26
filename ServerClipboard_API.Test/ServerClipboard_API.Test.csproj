@@ -28,6 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="EncryptionLib">
+      <HintPath>..\..\ServerClipboard_Console_Solution\cclip\EncryptionLib\EncryptionLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

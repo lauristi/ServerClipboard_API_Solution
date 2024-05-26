@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{103CB0B7-77D3-4CEE-88B1-2389CC4365FF}|ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj|d:\\projeto\\myrepository\\lauristi\\serverclipboardprojects\\serverclipboard_api_solution\\serverclipboard_api.test\\clipboardcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{103CB0B7-77D3-4CEE-88B1-2389CC4365FF}|ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj|solutionrelative:serverclipboard_api.test\\clipboardcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{103CB0B7-77D3-4CEE-88B1-2389CC4365FF}|ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj|d:\\projeto\\myrepository\\lauristi\\serverclipboardprojects\\serverclipboard_api_solution\\serverclipboard_api.test\\serverclipboard_api.test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{103CB0B7-77D3-4CEE-88B1-2389CC4365FF}|ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj|solutionrelative:serverclipboard_api.test\\serverclipboard_api.test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,15 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServerClipboard_API.Test",
+              "DocumentMoniker": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj",
+              "RelativeDocumentMoniker": "ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj",
+              "ToolTip": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj",
+              "RelativeToolTip": "ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-26T22:25:31.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClipboardControllerTest.cs",
+              "DocumentMoniker": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API.Test\\ClipboardControllerTest.cs",
+              "RelativeDocumentMoniker": "ServerClipboard_API.Test\\ClipboardControllerTest.cs",
+              "ToolTip": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API.Test\\ClipboardControllerTest.cs",
+              "RelativeToolTip": "ServerClipboard_API.Test\\ClipboardControllerTest.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAowAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T22:23:48.884Z",
+              "EditorCaption": ""
             }
           ]
         }
