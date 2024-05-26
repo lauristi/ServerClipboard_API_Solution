@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ServerClipboard_API.props" />
+</Project>

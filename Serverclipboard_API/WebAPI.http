@@ -1,0 +1,6 @@
+@ServerClipboard_API_HostAddress = http://localhost:5020
+
+GET {{ServerClipboard_API_HostAddress}}/
+Accept: application/json
+
+###

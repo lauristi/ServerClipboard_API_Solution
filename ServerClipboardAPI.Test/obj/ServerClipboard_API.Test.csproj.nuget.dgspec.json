@@ -1,0 +1,243 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboardAPI.Test\\ServerClipboard_API.Test.csproj": {}
+  },
+  "projects": {
+    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj",
+        "projectName": "EncryptionLib",
+        "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj",
+        "packagesPath": "C:\\Users\\sysdba\\.nuget\\packages\\",
+        "outputPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\sysdba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboardAPI.Test\\ServerClipboard_API.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboardAPI.Test\\ServerClipboard_API.Test.csproj",
+        "projectName": "ServerClipboard_API.Test",
+        "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboardAPI.Test\\ServerClipboard_API.Test.csproj",
+        "packagesPath": "C:\\Users\\sysdba\\.nuget\\packages\\",
+        "outputPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboardAPI.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\sysdba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API\\ServerClipboard_API.csproj": {
+                "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API\\ServerClipboard_API.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.10.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.8.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\ServerClipboard_API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\ServerClipboard_API.csproj",
+        "projectName": "ServerClipboard_API",
+        "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\ServerClipboard_API.csproj",
+        "packagesPath": "C:\\Users\\sysdba\\.nuget\\packages\\",
+        "outputPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\sysdba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj": {
+                "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\EncryptionLib_Solution\\EncryptionLib\\EncryptionLib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
