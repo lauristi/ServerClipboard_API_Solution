@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServerClipboard_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c87d498aaceeaedc6cc011eb10e6f6db61873e59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54cd8b811c091a005554a3343d23c3ece9ad0a06")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServerClipboard_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServerClipboard_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
