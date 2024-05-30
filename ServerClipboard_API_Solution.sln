@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerClipboard_API", "Serverclipboard_API\ServerClipboard_API.csproj", "{70DA1395-5516-4E49-9BF4-C471BBF54DF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerClipboard_API", "ServerClipboard_API\ServerClipboard_API.csproj", "{70DA1395-5516-4E49-9BF4-C471BBF54DF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serverclipboard_API.Test", "Serverclipboard_API.Test\Serverclipboard_API.Test.csproj", "{B367EAF1-0F85-482B-973F-A1A51B96E10D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerClipboard_API.Test", "ServerClipboard_API.Test\ServerClipboard_API.Test.csproj", "{B367EAF1-0F85-482B-973F-A1A51B96E10D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

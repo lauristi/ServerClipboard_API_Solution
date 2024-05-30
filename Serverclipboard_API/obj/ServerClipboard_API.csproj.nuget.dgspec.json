@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\ServerClipboard_API.csproj": {}
+    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API\\ServerClipboard_API.csproj": {}
   },
   "projects": {
-    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\ServerClipboard_API.csproj": {
+    "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API\\ServerClipboard_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\ServerClipboard_API.csproj",
+        "projectUniqueName": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API\\ServerClipboard_API.csproj",
         "projectName": "ServerClipboard_API",
-        "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\ServerClipboard_API.csproj",
+        "projectPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API\\ServerClipboard_API.csproj",
         "packagesPath": "C:\\Users\\sysdba\\.nuget\\packages\\",
         "outputPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\obj\\",
         "projectStyle": "PackageReference",
