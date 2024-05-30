@@ -16,7 +16,11 @@ jobs:
 
       - name: Print current clone project working directory 
         run: |
+         
+          echo "----------------------------------------------------------------"
           echo Git Workspace: ${{ github.workspace }}
+          echo "----------------------------------------------------------------"
+
           pwd
           ls -la
   
@@ -51,7 +55,16 @@ jobs:
     
     - name: Package Artifacts
       run: |
+        
+        echo "------------------------------------------------------"
+        echo "Verifying build archives"
+        echo "------------------------------------------------------"
+        ls -la ${{ env.BUILD_PATH }}
+        echo "------------------------------------------------------"
+        
+        echo "Creating temporary Artifact path"
         mkdir -p ${{ env.ARTIFACT_PATH }}
+        
         cp -r ${{ env.BUILD_PATH }}/* ${{ env.ARTIFACT_PATH }}/
     
     - name: Upload Artifact
