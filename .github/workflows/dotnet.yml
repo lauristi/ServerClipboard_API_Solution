@@ -5,19 +5,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-# =======================================================================================================================
-# VARIAVEIS DE AMBIENTE
-# =======================================================================================================================
-env:
-  PROJECT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
-  BUILD_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/bin/Debug/net8.0"
-  BUILD_TEST_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API.Test/bin/Debug/net8.0"
-  ARTIFACT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/Artifact"
 
 jobs:
-# =======================================================================================================================
-# REFERENCIA DE AMBIENTE
-# =======================================================================================================================
   environment:
     runs-on: ubuntu-latest
 
@@ -27,48 +16,45 @@ jobs:
 
       - name: Print current clone project working directory 
         run: |
+          echo Git Workspace: ${{ github.workspace }}
           pwd
           ls -la
-# =======================================================================================================================
-# MONTAGEM DO ARTEFATO
-# =======================================================================================================================
+  
   build:
-    needs: environment
     runs-on: ubuntu-latest
 
+    env:
+      SOLUTION_PATH: ${{ github.workspace }}/ServerClipBoard_API_Solution
+      BUILD_PATH: ${{ github.workspace }}/ServerClipBoard_API/bin/Debug/net8.0
+      ARTIFACT_PATH: ${{ github.workspace }}/ServerClipBoard_API/Artifact
+
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: 01- Setup .NET
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: '8.0.x'
     
-    - name: 02- Restore dependencies
-      run: dotnet restore ${{ env.PROJECT_PATH }}
-      working-directory: ${{ env.PROJECT_PATH }}
-
-    - name: Create temporay directories
-      run: |
-          echo "Create Build & Artifact folders"
-          mkdir -p ${{ env.BUILD_PATH }}
-          mkdir -p ${{ env.BUILD_TEST_PATH }}
-          mkdir -p ${{ env.ARTIFACT_PATH }}
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ${{ github.workspace }}
     
-    - name: 03- Build
-      # run: dotnet build --no-restore --output ${{ env.BUILD_PATH }}
-      run: dotnet build --no-restore 
-      working-directory: ${{ env.PROJECT_PATH }}
-
-    - name: 04- Test
+    - name: Build
+      run: dotnet build --no-restore --configuration Debug
+      working-directory: ${{ github.workspace }}
+    
+    - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: ${{ env.PROJECT_PATH }}
+      working-directory: ${{ github.workspace }}
     
-    - name: 05- Package Artifacts
+    - name: Package Artifacts
       run: |
+        mkdir -p ${{ env.ARTIFACT_PATH }}
         cp -r ${{ env.BUILD_PATH }}/* ${{ env.ARTIFACT_PATH }}/
     
-    - name: 06- Upload Artifact
+    - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
