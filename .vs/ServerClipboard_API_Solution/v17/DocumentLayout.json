@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{103CB0B7-77D3-4CEE-88B1-2389CC4365FF}|ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj|d:\\projeto\\myrepository\\lauristi\\serverclipboardprojects\\serverclipboard_api_solution\\serverclipboard_api.test\\clipboardcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{103CB0B7-77D3-4CEE-88B1-2389CC4365FF}|ServerClipboard_API.Test\\ServerClipboard_API.Test.csproj|solutionrelative:serverclipboard_api.test\\clipboardcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70DA1395-5516-4E49-9BF4-C471BBF54DF4}|Serverclipboard_API\\ServerClipboard_API.csproj|d:\\projeto\\myrepository\\lauristi\\serverclipboardprojects\\serverclipboard_api_solution\\serverclipboard_api\\model\\jenkinsclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70DA1395-5516-4E49-9BF4-C471BBF54DF4}|Serverclipboard_API\\ServerClipboard_API.csproj|solutionrelative:serverclipboard_api\\model\\jenkinsclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,24 +14,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JenkinsClass.cs",
+              "DocumentMoniker": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\Model\\JenkinsClass.cs",
+              "RelativeDocumentMoniker": "Serverclipboard_API\\Model\\JenkinsClass.cs",
+              "ToolTip": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Serverclipboard_API\\Model\\JenkinsClass.cs",
+              "RelativeToolTip": "Serverclipboard_API\\Model\\JenkinsClass.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T09:50:23.034Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ClipboardControllerTest.cs",
-              "DocumentMoniker": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API.Test\\ClipboardControllerTest.cs",
-              "RelativeDocumentMoniker": "ServerClipboard_API.Test\\ClipboardControllerTest.cs",
-              "ToolTip": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\ServerClipboard_API.Test\\ClipboardControllerTest.cs",
-              "RelativeToolTip": "ServerClipboard_API.Test\\ClipboardControllerTest.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAgwAUAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T22:55:05.861Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }
