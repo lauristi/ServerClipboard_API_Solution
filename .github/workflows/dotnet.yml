@@ -27,7 +27,9 @@ jobs:
 
     env:
       SOLUTION_PATH: ${{ github.workspace }}/ServerClipboard_API_Solution
+      PROJECT_PATH: ${{ github.workspace }}/ServerClipboard_API_Solution/ServerClipboard_API
       BUILD_PATH: ${{ github.workspace }}/ServerClipboard_API/bin/Debug/net8.0
+      PUBLISH_PATH: ${{ github.workspace }}/ServerClipboard_API/bin/Debug/net8.0/Publish
       ARTIFACT_PATH: ${{ github.workspace }}/ServerClipboard_API/Artifact
 
     steps:
@@ -55,7 +57,8 @@ jobs:
       run: |
          ls -la 
          echo "----------------------------------------------"
-         ls -la ${{ env.PROJECT_PATH }}/ServerClipboard_API
+         ls -la ${{ env.PROJECT_PATH }}
+         
          dotnet publish ${{ env.SOLUTION_PATH }}/ServerClipboard_API/ServerClipboard_API.csproj -c Release
     
     - name: Package Artifacts
@@ -65,7 +68,7 @@ jobs:
         echo "Verifying build archives"
         echo "------------------------------------------------------"
         #ls -la ${{ env.BUILD_PATH }}
-         ls -la ${{ env.PROJECT_PATH }}/bin/Release/net8.0/publish
+         ls -la ${{ env.PUBLISH_PATH }}
         echo "------------------------------------------------------"
         
         echo "Creating temporary Artifact path"
