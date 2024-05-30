@@ -10,8 +10,8 @@ on:
     branches: [ "master" ]
 
 env:
-  PROJECT_PATH: "/home/runner/work/ServerClipboard/ServerClipboard"
-  DEPLOY_PATH: "/home/runner/work/ServerClipboard/ServerClipboard/Deploy"
+  PROJECT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
+  DEPLOY_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
 
 jobs:
  
