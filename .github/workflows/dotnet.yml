@@ -52,7 +52,7 @@ jobs:
       working-directory: ${{ github.workspace }}
     
     - name: Publish
-      run: dotnet publish ${{ env.SOLUTION_PATH }}/ServerClipBoard_API.csproj -c Release
+      run: dotnet publish ${{ env.SOLUTION_PATH }}/ServerClipBoard_API/ServerClipBoard_API.csproj -c Release
     
     - name: Package Artifacts
       run: |
