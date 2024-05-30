@@ -29,7 +29,7 @@ jobs:
       SOLUTION_PATH: ${{ github.workspace }}
       PROJECT_PATH: ${{ github.workspace }}/ServerClipboard_API
       BUILD_PATH: ${{ github.workspace }}/ServerClipboard_API/bin/Debug/net8.0
-      PUBLISH_PATH: ${{ github.workspace }}/ServerClipboard_API/bin/Debug/net8.0/publish
+      PUBLISH_PATH: ${{ github.workspace }}/ServerClipboard_API/bin/Release/net8.0/publish/
       ARTIFACT_PATH: ${{ github.workspace }}/ServerClipboard_API/Artifact
 
     steps:
