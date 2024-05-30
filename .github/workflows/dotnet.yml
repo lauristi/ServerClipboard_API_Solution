@@ -1,4 +1,3 @@
-
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
@@ -10,9 +9,26 @@ on:
   pull_request:
     branches: [ "master" ]
 
-jobs:
-  build:
+env:
+  PROJECT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
+  DEPLOY_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
 
+jobs:
+
+  environment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Print current clone project working directory 
+        run: |
+          pwd
+          ls -la
+
+  build:
+    needs: environment
     runs-on: ubuntu-latest
 
     steps:
@@ -21,9 +37,15 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+    
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      working-directory: ${{ env.PROJECT_PATH }}
+    
     - name: Build
       run: dotnet build --no-restore
+      working-directory: ${{ env.PROJECT_PATH }}
+
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: ${{ env.PROJECT_PATH }}
