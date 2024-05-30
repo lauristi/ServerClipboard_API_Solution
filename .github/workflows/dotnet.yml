@@ -53,6 +53,8 @@ jobs:
     
     - name: Publish
       run: |
+         ls -la 
+         echo "----------------------------------------------"
          ls -la ${{ env.PROJECT_PATH }}/ServerClipBoard_API
          dotnet publish ${{ env.SOLUTION_PATH }}/ServerClipBoard_API/ServerClipBoard_API.csproj -c Release
     
