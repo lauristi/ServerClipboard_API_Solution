@@ -33,27 +33,28 @@ jobs:
       ARTIFACT_PATH: ${{ github.workspace }}/ServerClipboard_API/Artifact
 
     steps:
-    - name: Checkout repository
+    
+    - name: 01-Checkout repository
       uses: actions/checkout@v4
 
-    - name: Setup .NET
+    - name: 02-Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
     
-    - name: Restore dependencies
+    - name: 03-Restore dependencies
       run: dotnet restore
       working-directory: ${{ github.workspace }}
     
-    - name: Build
+    - name: 04-Build
       run: dotnet build --no-restore --configuration Debug
       working-directory: ${{ github.workspace }}
     
-    - name: Test
+    - name: 05-Test
       run: dotnet test --no-build --verbosity normal
       working-directory: ${{ github.workspace }}
     
-    - name: Publish
+    - name: 06-Publish
       run: |
          ls -la 
          echo
@@ -62,7 +63,7 @@ jobs:
          
          dotnet publish ${{ env.SOLUTION_PATH }}/ServerClipboard_API/ServerClipboard_API.csproj -c Release
     
-    - name: Package Artifacts
+    - name: 07-Package Artifacts
       run: |
         echo
         echo "------------------------------------------------------"
@@ -76,7 +77,7 @@ jobs:
         
         cp -r ${{ env.BUILD_PATH }}/* ${{ env.ARTIFACT_PATH }}/
     
-    - name: Upload Artifact
+    - name: 08-Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
