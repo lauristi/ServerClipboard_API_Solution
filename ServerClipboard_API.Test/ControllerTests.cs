@@ -7,13 +7,13 @@ using ServerClipboard_API.Model.clipboard;
 
 namespace ServerClipboard_API.Tests
 {
-    public class ClipboardControllerTests
+    public class ControllerTests
     {
         private readonly Mock<ICrypto> _cryptoMock;
         private readonly Mock<ILogger<ClipboardController>> _loggerMock;
         private readonly ClipboardController _controller;
 
-        public ClipboardControllerTests()
+        public ControllerTests()
         {
             _cryptoMock = new Mock<ICrypto>();
             _loggerMock = new Mock<ILogger<ClipboardController>>();
@@ -23,7 +23,7 @@ namespace ServerClipboard_API.Tests
         //---------------------------------------------------------------------------
         //Basic tests
         //---------------------------------------------------------------------------
-        
+
         [Fact]
         public async Task PostClipBoard_ShouldEncryptContent()
         {
