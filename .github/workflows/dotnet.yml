@@ -5,12 +5,18 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+# =======================================================================================================================
+# VARIAVEIS DE AMBIENTE
+# =======================================================================================================================
 env:
   PROJECT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
-  DEPLOY_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
+  BUILD_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/Build"
+  ARTIFACT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/Artifact"
 
 jobs:
+# =======================================================================================================================
+# REFERENCIA DE AMBIENTE
+# =======================================================================================================================
   environment:
     runs-on: ubuntu-latest
 
@@ -22,7 +28,9 @@ jobs:
         run: |
           pwd
           ls -la
-
+# =======================================================================================================================
+# MONTAGEM DO ARTEFATO
+# =======================================================================================================================
   build:
     needs: environment
     runs-on: ubuntu-latest
@@ -38,22 +46,27 @@ jobs:
     - name: 02- Restore dependencies
       run: dotnet restore ${{ env.PROJECT_PATH }}
       working-directory: ${{ env.PROJECT_PATH }}
+
+    - name: Create temporay directories
+      run: |
+          echo "Create Build & Artifact folders"
+          mkdir -p ${{ env.BUILD_PATH }}
+          mkdir -p ${{ env.ARTIFACT_PATH }}
     
     - name: 03- Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --output ${{ env.BUILD_PATH }}
       working-directory: ${{ env.PROJECT_PATH }}
 
     - name: 04- Test
       run: dotnet test --no-build --verbosity normal
       working-directory: ${{ env.PROJECT_PATH }}
     
-    - name: 05- SPackage Artifacts
+    - name: 05- Package Artifacts
       run: |
-        mkdir -p ${{ env.DEPLOY_PATH }}/artifacts
-        cp -r ${{ env.PROJECT_PATH }}/bin/Release/* ${{ env.DEPLOY_PATH }}/artifacts/
+        cp -r ${{ env.BUILD_PATH }}/* ${{ env.ARTIFACT_PATH }}/
     
-    - name: 06- SUpload Artifact
+    - name: 06- Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
-        path: ${{ env.DEPLOY_PATH }}/artifacts
+        path: ${{ env.ARTIFACT_PATH }}
