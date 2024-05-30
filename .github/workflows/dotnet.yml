@@ -53,8 +53,7 @@ jobs:
     
     
     - name: Publish
-      run: dotnet publish /ServerClipBoard_API/ServerClipBoard_API.csproj -c Release -o release
-
+      run: dotnet publish ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj -c Release -o 
     
     - name: Package Artifacts
       run: |
