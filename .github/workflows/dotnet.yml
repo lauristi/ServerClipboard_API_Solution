@@ -1,5 +1,3 @@
-name: .NET
-
 on:
   push:
     branches: [ "master" ]
@@ -16,18 +14,20 @@ jobs:
 
       - name: Print current clone project working directory 
         run: |
+         
           echo "----------------------------------------------------------------"
           echo Git Workspace: ${{ github.workspace }}
           echo "----------------------------------------------------------------"
+
           pwd
           ls -la
-
+  
   build:
     runs-on: ubuntu-latest
 
     env:
       SOLUTION_PATH: ${{ github.workspace }}/ServerClipBoard_API_Solution
-      PROJECT_PATH: ${{ github.workspace }}/ServerClipBoard_API
+      BUILD_PATH: ${{ github.workspace }}/ServerClipBoard_API/bin/Debug/net8.0
       ARTIFACT_PATH: ${{ github.workspace }}/ServerClipBoard_API/Artifact
 
     steps:
@@ -40,29 +40,36 @@ jobs:
         dotnet-version: '8.0.x'
     
     - name: Restore dependencies
-      run: dotnet restore ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj
+      run: dotnet restore
+      working-directory: ${{ github.workspace }}
     
     - name: Build
-      run: dotnet build --no-restore --configuration Debug ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj
+      run: dotnet build --no-restore --configuration Debug
+      working-directory: ${{ github.workspace }}
     
     - name: Test
-      run: dotnet test --no-build --verbosity normal ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj
+      run: dotnet test --no-build --verbosity normal
+      working-directory: ${{ github.workspace }}
+    
     
     - name: Publish
-      run: dotnet publish ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj -c Release -o ${{ env.ARTIFACT_PATH }}/release
+      run: dotnet publish /ServerClipBoard_API/ServerClipBoard_API.csproj -c Release -o release
+
     
     - name: Package Artifacts
       run: |
+        
         echo "------------------------------------------------------"
         echo "Verifying build archives"
         echo "------------------------------------------------------"
-        ls -la ${{ env.ARTIFACT_PATH }}/release
+        #ls -la ${{ env.BUILD_PATH }}
+        ls -la ${{ env.SOLUTION_PATH }}/ServerClipboard_API/bin/Debug/net8.0
         echo "------------------------------------------------------"
         
         echo "Creating temporary Artifact path"
         mkdir -p ${{ env.ARTIFACT_PATH }}
         
-        cp -r ${{ env.ARTIFACT_PATH }}/release/* ${{ env.ARTIFACT_PATH }}/
+        cp -r ${{ env.BUILD_PATH }}/* ${{ env.ARTIFACT_PATH }}/
     
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
