@@ -5,7 +5,12 @@ VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerClipboard_API", "ServerClipboard_API\ServerClipboard_API.csproj", "{70DA1395-5516-4E49-9BF4-C471BBF54DF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerClipboard_API.Test", "ServerClipboard_API.Test\ServerClipboard_API.Test.csproj", "{B367EAF1-0F85-482B-973F-A1A51B96E10D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerClipboard_API.Test", "ServerClipboard_API.Test\ServerClipboard_API.Test.csproj", "{B367EAF1-0F85-482B-973F-A1A51B96E10D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B58006D4-565B-408D-A322-89F6AACC1A3C}"
+	ProjectSection(SolutionItems) = preProject
+		jenkinsfile.txt = jenkinsfile.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
