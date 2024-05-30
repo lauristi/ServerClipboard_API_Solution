@@ -55,7 +55,8 @@ jobs:
     
     
     - name: Publish
-      run: dotnet publish /ServerClipBoard_API/ServerClipBoard_API.csproj -c Release -o release --nologo
+      run: dotnet publish /ServerClipBoard_API/ServerClipBoard_API.csproj -c Release -o release
+
     
     - name: Package Artifacts
       run: |
