@@ -40,12 +40,12 @@ jobs:
     
     - name: Restore dependencies
       run: dotnet restore ${{ env.PROJECT_PATH }}
-      working-directory: ServerClipboard_API_Solution
+      working-directory: ${{ env.PROJECT_PATH }}
     
     - name: Build
       run: dotnet build --no-restore
-      working-directory: ServerClipboard_API_Solution
+      working-directory: ${{ env.PROJECT_PATH }}
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: ServerClipboard_API_Solution
+      working-directory: ${{ env.PROJECT_PATH }}
