@@ -55,7 +55,7 @@ jobs:
       run: |
          ls -la 
          echo "----------------------------------------------"
-         ls -la ${{ env.PROJECT_PATH }}/ServerClipBoard_API
+         ls -la ${{ env.PROJECT_PATH }}/ServerClipboard_API
          dotnet publish ${{ env.SOLUTION_PATH }}/ServerClipboard_API/ServerClipboard_API.csproj -c Release
     
     - name: Package Artifacts
