@@ -59,7 +59,8 @@ jobs:
         echo "------------------------------------------------------"
         echo "Verifying build archives"
         echo "------------------------------------------------------"
-        ls -la ${{ env.BUILD_PATH }}
+        #ls -la ${{ env.BUILD_PATH }}
+        ls -la ${{ env.SOLUTION_PATH }}/ServerClipboard_API/bin/Debug/net8.0
         echo "------------------------------------------------------"
         
         echo "Creating temporary Artifact path"
