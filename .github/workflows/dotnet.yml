@@ -11,6 +11,7 @@ on:
 env:
   PROJECT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
   BUILD_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/Build"
+  BUILD_TEST_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API.Test/Build"
   ARTIFACT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/Artifact"
 
 jobs:
@@ -51,6 +52,7 @@ jobs:
       run: |
           echo "Create Build & Artifact folders"
           mkdir -p ${{ env.BUILD_PATH }}
+          mkdir -p ${{ env.BUILD_TEST_PATH }}
           mkdir -p ${{ env.ARTIFACT_PATH }}
     
     - name: 03- Build
