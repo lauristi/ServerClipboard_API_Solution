@@ -77,7 +77,7 @@ jobs:
         cp -r ${{ env.BUILD_PATH }}/* ${{ env.ARTIFACT_PATH }}/
     
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
         path: ${{ env.ARTIFACT_PATH }}
