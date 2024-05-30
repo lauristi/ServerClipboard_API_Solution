@@ -26,9 +26,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SOLUTION_PATH: ${{ github.workspace }}/ServerClipBoard_API_Solution
-      BUILD_PATH: ${{ github.workspace }}/ServerClipBoard_API/bin/Debug/net8.0
-      ARTIFACT_PATH: ${{ github.workspace }}/ServerClipBoard_API/Artifact
+      SOLUTION_PATH: ${{ github.workspace }}/ServerClipboard_API_Solution
+      BUILD_PATH: ${{ github.workspace }}/ServerClipboard_API/bin/Debug/net8.0
+      ARTIFACT_PATH: ${{ github.workspace }}/ServerClipboard_API/Artifact
 
     steps:
     - name: Checkout repository
@@ -56,7 +56,7 @@ jobs:
          ls -la 
          echo "----------------------------------------------"
          ls -la ${{ env.PROJECT_PATH }}/ServerClipBoard_API
-         dotnet publish ${{ env.SOLUTION_PATH }}/ServerClipBoard_API/ServerClipBoard_API.csproj -c Release
+         dotnet publish ${{ env.SOLUTION_PATH }}/ServerClipboard_API/ServerClipboard_API.csproj -c Release
     
     - name: Package Artifacts
       run: |
