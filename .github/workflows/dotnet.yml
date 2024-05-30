@@ -52,7 +52,7 @@ jobs:
       working-directory: ${{ github.workspace }}
     
     - name: Publish
-      run: dotnet publish ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj -c Release -o release --nologo
+      run: dotnet publish ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj -c Release --nologo
     
     - name: Package Artifacts
       run: |
@@ -61,7 +61,7 @@ jobs:
         echo "Verifying build archives"
         echo "------------------------------------------------------"
         #ls -la ${{ env.BUILD_PATH }}
-        ls -la ${{ env.SOLUTION_PATH }}/ServerClipboard_API/bin/Debug/net8.0
+         ls -la ${{ env.PROJECT_PATH }}/bin/Release/net8.0/publish
         echo "------------------------------------------------------"
         
         echo "Creating temporary Artifact path"
