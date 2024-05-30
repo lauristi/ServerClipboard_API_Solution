@@ -14,7 +14,7 @@ env:
   DEPLOY_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
 
 jobs:
- 
+
   environment:
     runs-on: ubuntu-latest
 
