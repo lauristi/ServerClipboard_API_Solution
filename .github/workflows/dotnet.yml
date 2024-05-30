@@ -51,9 +51,8 @@ jobs:
       run: dotnet test --no-build --verbosity normal
       working-directory: ${{ github.workspace }}
     
-    
     - name: Publish
-      run: dotnet publish ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj -c Release -o 
+      run: dotnet publish ${{ env.PROJECT_PATH }}/ServerClipBoard_API.csproj -c Release -o release --nologo
     
     - name: Package Artifacts
       run: |
