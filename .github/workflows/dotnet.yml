@@ -10,8 +10,8 @@ on:
 # =======================================================================================================================
 env:
   PROJECT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution"
-  BUILD_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/Build"
-  BUILD_TEST_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API.Test/Build"
+  BUILD_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/bin/Debug/net8.0"
+  BUILD_TEST_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API.Test/bin/Debug/net8.0"
   ARTIFACT_PATH: "/home/runner/work/ServerClipboard_API_Solution/ServerClipboard_API_Solution/ServerClipBoard_API/Artifact"
 
 jobs:
@@ -56,7 +56,8 @@ jobs:
           mkdir -p ${{ env.ARTIFACT_PATH }}
     
     - name: 03- Build
-      run: dotnet build --no-restore --output ${{ env.BUILD_PATH }}
+      # run: dotnet build --no-restore --output ${{ env.BUILD_PATH }}
+      run: dotnet build --no-restore 
       working-directory: ${{ env.PROJECT_PATH }}
 
     - name: 04- Test
