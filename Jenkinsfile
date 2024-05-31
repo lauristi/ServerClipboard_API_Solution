@@ -11,7 +11,7 @@ pipeline {
         ARTIFACT_PATH = 'ServerClipboard_API/Artifact'  // Caminho onde os artefatos serão armazenados
         DEPLOY_DIR = '/var/www/app/ServerClipboard_API'  // Diretório de implantação no servidor
     }
-
+        
     stages {
         stage('Checkout') {
             steps {
