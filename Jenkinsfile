@@ -48,19 +48,18 @@ pipeline {
       }
     }
 
-stage('Deploy') {
-  agent any
-  steps {
-    script {
-      sh """
-      echo ${SUDO_PASSWORD} | sudo -S mkdir -p ${env.DEPLOY_DIR}
-      sudo cp -r ${env.ARTIFACT_PATH}/* ${env.DEPLOY_DIR}/
-      sudo chown -R www-data:www-data ${env.DEPLOY_DIR}/
-      """
+    stage('Deploy') {
+      steps {
+        script {
+          sh """
+          echo ${SUDO_PASSWORD} | sudo -S mkdir -p ${env.DEPLOY_DIR}
+          sudo cp -r ${env.ARTIFACT_PATH}/* ${env.DEPLOY_DIR}/
+          sudo chown -R www-data:www-data ${env.DEPLOY_DIR}/
+          """
+        }
+      }
     }
   }
-}
-    
   environment {
     REPO_OWNER = 'lauristi'
     REPO_NAME = 'ServerClipboard_API_Solution'
