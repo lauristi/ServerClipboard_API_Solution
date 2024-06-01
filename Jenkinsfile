@@ -9,29 +9,35 @@ pipeline {
             sh "cd ServerClipboard_API_Solution && git checkout ${env.BRANCH}"
           }
         }
+
       }
     }
+
     stage('Restore Dependencies') {
       steps {
         sh "${env.DOTNET_ROOT}/dotnet --version"
         sh "${env.DOTNET_ROOT}/dotnet restore ${env.SOLUTION_PATH}"
       }
     }
+
     stage('Build') {
       steps {
         sh "${env.DOTNET_ROOT}/dotnet build ${env.SOLUTION_PATH} --no-restore --configuration Debug"
       }
     }
+
     stage('Test') {
       steps {
         sh "${env.DOTNET_ROOT}/dotnet test ${env.SOLUTION_PATH} --no-build --verbosity normal"
       }
     }
+
     stage('Publish') {
       steps {
         sh "${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH} -c Release -o ${env.PUBLISH_PATH}"
       }
     }
+
     stage('Package Artifacts') {
       steps {
         script {
@@ -41,21 +47,24 @@ pipeline {
           """
           archiveArtifacts artifacts: "${env.ARTIFACT_PATH}/**", allowEmptyArchive: true
         }
+
       }
     }
+
     stage('Deploy') {
       steps {
         script {
           withCredentials([string(credentialsId: 'SUDO_PASSWORD', variable: 'SUDO_PASSWORD')]) {
             sh '''
-              // echo "${SUDO_PASSWORD}" | sudo -S mkdir -p "${DEPLOY_DIR}"
-              sudo cp -r "${ARTIFACT_PATH}"/* "${DEPLOY_DIR}/"
-              sudo chown -R www-data:www-data "${DEPLOY_DIR}/"
-            '''
+sudo cp -r "${ARTIFACT_PATH}"/* "${DEPLOY_DIR}/"
+sudo chown -R www-data:www-data "${DEPLOY_DIR}/"
+'''
           }
         }
+
       }
     }
+
   }
   environment {
     REPO_OWNER = 'lauristi'
@@ -75,5 +84,6 @@ pipeline {
     always {
       cleanWs()
     }
+
   }
 }
