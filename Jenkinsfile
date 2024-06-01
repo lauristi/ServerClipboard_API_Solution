@@ -47,11 +47,11 @@ pipeline {
       steps {
         script {
           withCredentials([string(credentialsId: 'SUDO_PASSWORD', variable: 'SUDO_PASSWORD')]) {
-            sh """
-            echo ${SUDO_PASSWORD} | sudo -S mkdir -p ${env.DEPLOY_DIR}
-            sudo cp -r ${env.ARTIFACT_PATH}/* ${env.DEPLOY_DIR}/
-            sudo chown -R www-data:www-data ${env.DEPLOY_DIR}/
-            """
+            sh '''
+              echo "${SUDO_PASSWORD}" | sudo -S mkdir -p "${DEPLOY_DIR}"
+              sudo cp -r "${ARTIFACT_PATH}"/* "${DEPLOY_DIR}/"
+              sudo chown -R www-data:www-data "${DEPLOY_DIR}/"
+            '''
           }
         }
       }
