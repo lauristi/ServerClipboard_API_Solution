@@ -17,25 +17,21 @@ pipeline {
         sh "${env.DOTNET_ROOT}/dotnet restore ${env.SOLUTION_PATH}"
       }
     }
-
     stage('Build') {
       steps {
         sh "${env.DOTNET_ROOT}/dotnet build ${env.SOLUTION_PATH} --no-restore --configuration Debug"
       }
     }
-
     stage('Test') {
       steps {
         sh "${env.DOTNET_ROOT}/dotnet test ${env.SOLUTION_PATH} --no-build --verbosity normal"
       }
     }
-
     stage('Publish') {
       steps {
         sh "${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH} -c Release -o ${env.PUBLISH_PATH}"
       }
     }
-
     stage('Package Artifacts') {
       steps {
         script {
@@ -47,15 +43,16 @@ pipeline {
         }
       }
     }
-
     stage('Deploy') {
       steps {
         script {
-          sh """
-          echo ${SUDO_PASSWORD} | sudo -S mkdir -p ${env.DEPLOY_DIR}
-          sudo cp -r ${env.ARTIFACT_PATH}/* ${env.DEPLOY_DIR}/
-          sudo chown -R www-data:www-data ${env.DEPLOY_DIR}/
-          """
+          withCredentials([string(credentialsId: 'SUDO_PASSWORD', variable: 'SUDO_PASSWORD')]) {
+            sh """
+            echo ${SUDO_PASSWORD} | sudo -S mkdir -p ${env.DEPLOY_DIR}
+            sudo cp -r ${env.ARTIFACT_PATH}/* ${env.DEPLOY_DIR}/
+            sudo chown -R www-data:www-data ${env.DEPLOY_DIR}/
+            """
+          }
         }
       }
     }
@@ -65,7 +62,6 @@ pipeline {
     REPO_NAME = 'ServerClipboard_API_Solution'
     GIT_REPO = 'https://github.com/lauristi/ServerClipboard_API_Solution.git'
     BRANCH = 'master'
-    SUDO_PASSWORD = "${secrets.SUDO_PASSWORD}"
     SOLUTION_PATH = 'ServerClipboard_API'
     PROJECT_PATH = 'ServerClipboard_API/ServerClipboard_API.csproj'
     BUILD_PATH = 'ServerClipboard_API/bin/Debug/net8.0'
