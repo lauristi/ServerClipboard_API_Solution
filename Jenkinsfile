@@ -3,10 +3,14 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git(branch: "${env.BRANCH}", url: "${env.GIT_REPO}")
+        script {
+          withCredentials([string(credentialsId: 'JENKINS_TOKEN', variable: 'GITHUB_TOKEN')]) {
+            sh 'git clone https://${GITHUB_TOKEN}@github.com/lauristi/ServerClipboard_API_Solution.git'
+            sh "cd ServerClipboard_API_Solution && git checkout ${env.BRANCH}"
+          }
+        }
       }
     }
-
     stage('Restore Dependencies') {
       steps {
         sh "${env.DOTNET_ROOT}/dotnet --version"
