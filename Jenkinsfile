@@ -56,7 +56,7 @@ pipeline {
         script {
           withCredentials([string(credentialsId: 'SUDO_PASSWORD', variable: 'SUDO_PASSWORD')]) {
             sh '''
-sudo cp -r "${ARTIFACT_PATH}"/* "${DEPLOY_DIR}/"
+echo "${SUDO_PASSWORD}" | sudo -S cp -r "${ARTIFACT_PATH}"/* "${DEPLOY_DIR}/"
 sudo chown -R www-data:www-data "${DEPLOY_DIR}/"
 '''
           }
