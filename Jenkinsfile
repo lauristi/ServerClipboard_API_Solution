@@ -7,15 +7,6 @@ pipeline {
       }
     }
 
-    stage('Setup .NET') {
-      steps {
-        sh 'wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh'
-        sh 'chmod +x dotnet-install.sh'
-        sh './dotnet-install.sh -c 8.0'
-        sh 'export PATH=$PATH:$HOME/.dotnet'
-      }
-    }
-
     stage('Restore Dependencies') {
       steps {
         sh "dotnet restore ${env.SOLUTION_PATH}"
@@ -50,7 +41,6 @@ pipeline {
           // Arquiva os artefatos no Jenkins
           archiveArtifacts artifacts: "${env.ARTIFACT_PATH}/**", allowEmptyArchive: true
         }
-
       }
     }
 
@@ -64,10 +54,8 @@ pipeline {
           sudo chown -R www-data:www-data ${env.DEPLOY_DIR}  // Define permissões apropriadas
           """
         }
-
       }
     }
-
   }
   environment {
     REPO_OWNER = 'lauristi'
@@ -80,11 +68,12 @@ pipeline {
     PUBLISH_PATH = 'ServerClipboard_API/bin/Release/net8.0/publish'
     ARTIFACT_PATH = 'ServerClipboard_API/Artifact'
     DEPLOY_DIR = '/var/www/app/ServerClipboard_API'
+    DOTNET_ROOT = '/caminho/para/o/dotnet' // Substitua pelo caminho correto do SDK instalado
+    PATH = "${DOTNET_ROOT}:${env.PATH}"
   }
   post {
     always {
       cleanWs()
     }
-
   }
 }
