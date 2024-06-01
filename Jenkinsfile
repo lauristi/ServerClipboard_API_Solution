@@ -66,7 +66,7 @@ pipeline {
     REPO_NAME = 'ServerClipboard_API_Solution'
     GIT_REPO = 'https://github.com/lauristi/ServerClipboard_API_Solution.git'
     BRANCH = 'master'
-    SUDO_PASSWORD = ${secrets.SUDO_PASSWORD}
+    SUDO_PASSWORD = "${secrets.SUDO_PASSWORD}"
     SOLUTION_PATH = 'ServerClipboard_API'
     PROJECT_PATH = 'ServerClipboard_API/ServerClipboard_API.csproj'
     BUILD_PATH = 'ServerClipboard_API/bin/Debug/net8.0'
