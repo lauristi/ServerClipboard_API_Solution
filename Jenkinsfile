@@ -9,25 +9,26 @@ pipeline {
 
     stage('Restore Dependencies') {
       steps {
-        sh "dotnet restore ${env.SOLUTION_PATH}"
+        sh "${env.DOTNET_ROOT}/dotnet --version"
+        sh "${env.DOTNET_ROOT}/dotnet restore ${env.SOLUTION_PATH}"
       }
     }
 
     stage('Build') {
       steps {
-        sh "dotnet build ${env.SOLUTION_PATH} --no-restore --configuration Debug"
+        sh "${env.DOTNET_ROOT}/dotnet build ${env.SOLUTION_PATH} --no-restore --configuration Debug"
       }
     }
 
     stage('Test') {
       steps {
-        sh "dotnet test ${env.SOLUTION_PATH} --no-build --verbosity normal"
+        sh "${env.DOTNET_ROOT}/dotnet test ${env.SOLUTION_PATH} --no-build --verbosity normal"
       }
     }
 
     stage('Publish') {
       steps {
-        sh "dotnet publish ${env.PROJECT_PATH} -c Release -o ${env.PUBLISH_PATH}"
+        sh "${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH} -c Release -o ${env.PUBLISH_PATH}"
       }
     }
 
@@ -38,7 +39,6 @@ pipeline {
           mkdir -p ${env.ARTIFACT_PATH}
           cp -r ${env.PUBLISH_PATH}/* ${env.ARTIFACT_PATH}/
           """
-          // Arquiva os artefatos no Jenkins
           archiveArtifacts artifacts: "${env.ARTIFACT_PATH}/**", allowEmptyArchive: true
         }
       }
@@ -51,7 +51,7 @@ pipeline {
           sh """
           sudo mkdir -p ${env.DEPLOY_DIR}
           sudo cp -r ${env.ARTIFACT_PATH}/* ${env.DEPLOY_DIR}/
-          sudo chown -R www-data:www-data ${env.DEPLOY_DIR}  // Define permissões apropriadas
+          sudo chown -R www-data:www-data ${env.DEPLOY_DIR}/
           """
         }
       }
@@ -68,7 +68,7 @@ pipeline {
     PUBLISH_PATH = 'ServerClipboard_API/bin/Release/net8.0/publish'
     ARTIFACT_PATH = 'ServerClipboard_API/Artifact'
     DEPLOY_DIR = '/var/www/app/ServerClipboard_API'
-    DOTNET_ROOT = '/caminho/para/o/dotnet' // Substitua pelo caminho correto do SDK instalado
+    DOTNET_ROOT = '/opt/dotnet'
     PATH = "${DOTNET_ROOT}:${env.PATH}"
   }
   post {
