@@ -49,7 +49,7 @@ pipeline {
       steps {
         script {
           sh """
-          sudo mkdir -p ${env.DEPLOY_DIR}
+          echo $SUDO_PASSWORD | sudo -S mkdir -p ${env.DEPLOY_DIR}
           sudo cp -r ${env.ARTIFACT_PATH}/* ${env.DEPLOY_DIR}/
           sudo chown -R www-data:www-data ${env.DEPLOY_DIR}/
           """
@@ -62,6 +62,7 @@ pipeline {
     REPO_NAME = 'ServerClipboard_API_Solution'
     GIT_REPO = 'https://github.com/lauristi/ServerClipboard_API_Solution.git'
     BRANCH = 'master'
+    SUDO_PASSWORD = ${{ secrets.SUDO_PASSWORD }}
     SOLUTION_PATH = 'ServerClipboard_API'
     PROJECT_PATH = 'ServerClipboard_API/ServerClipboard_API.csproj'
     BUILD_PATH = 'ServerClipboard_API/bin/Debug/net8.0'
