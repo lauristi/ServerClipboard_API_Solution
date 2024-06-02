@@ -23,7 +23,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'JENKINS_TOKEN', variable: 'GITHUB_TOKEN')]) {
                         try {
                             sh 'git clone https://${GITHUB_TOKEN}@github.com/lauristi/ServerClipboard_API_Solution.git'
-                            sh "cd ServerClipboard_API_Solution && git checkout ${env.BRANCH}
+                            sh "cd ServerClipboard_API_Solution && git checkout ${env.BRANCH}"
                         } catch (Exception e) {
                             TratarErro(e)
                         }
