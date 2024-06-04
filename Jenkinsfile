@@ -119,3 +119,9 @@ pipeline {
     }
   }
 }
+
+def TratarErro(Exception e) {
+    currentBuild.result = 'FAILURE'
+    echo "Deploy failed: ${e.message}"
+    error('Deploy failed')
+}
