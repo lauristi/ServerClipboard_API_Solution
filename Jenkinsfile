@@ -24,7 +24,7 @@ pipeline {
         script {
           try {
             sh "${env.DOTNET_ROOT}/dotnet --version"
-            sh "${env.DOTNET_ROOT}/dotnet restore ${env.SOLUTION_PATH}"
+            sh "${env.DOTNET_ROOT}/dotnet restore ${env.PROJECT_NAME}"
           } catch (Exception e) {
             TratarErro(e)
           }
@@ -36,7 +36,7 @@ pipeline {
       steps {
         script {
           try {
-            sh "${env.DOTNET_ROOT}/dotnet build ${env.SOLUTION_PATH} --no-restore --configuration Debug"
+            sh "${env.DOTNET_ROOT}/dotnet build ${env.PROJECT_NAME} --no-restore --configuration Debug"
           } catch (Exception e) {
             TratarErro(e)
           }
@@ -48,7 +48,7 @@ pipeline {
       steps {
         script {
           try {
-            sh "${env.DOTNET_ROOT}/dotnet test ${env.SOLUTION_PATH} --no-build --verbosity normal"
+            sh "${env.DOTNET_ROOT}/dotnet test ${env.PROJECT_NAME} --no-build --verbosity normal"
           } catch (Exception e) {
             TratarErro(e)
           }
@@ -60,7 +60,7 @@ pipeline {
       steps {
         script {
           try {
-            sh "${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH} -c Release -o ${env.PUBLISH_PATH}"
+            sh "${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH_ARCHIVE} -c Release -o ${env.PUBLISH_PATH}"
           } catch (Exception e) {
             TratarErro(e)
           }
@@ -89,8 +89,8 @@ pipeline {
         script {
           try {
             sh """
-            sudo -S cp -r "${env.ARTIFACT_PATH}"/* "${env.DEPLOY_DIR}/" && echo "Copy succeeded" || echo "Copy failed"
-            sudo chown -R www-data:www-data "${env.DEPLOY_DIR}/" && echo "Chown succeeded" || echo "Chown failed"
+            sudo -S cp -r "${env.ARTIFACT_PATH}"/* "${env.DEPLOY_PATH}/" && echo "Copy succeeded" || echo "Copy failed"
+            sudo chown -R www-data:www-data "${env.DEPLOY_PATH}/" && echo "Chown succeeded" || echo "Chown failed"
             """
           } catch (Exception e) {
             TratarErro(e)
@@ -108,13 +108,12 @@ pipeline {
   environment {
     GIT_REPO = 'github.com/lauristi/ServerClipboard_API_Solution.git'
     BRANCH = 'master'
-    SOLUTION_PATH = 'ServerClipboard_API'
-    PROJECT_PATH = 'ServerClipboard_API/ServerClipboard_API.csproj'
+    PROJECT_NAME = 'ServerClipboard_API'
+    PROJECT_PATH_ARCHIVE = 'ServerClipboard_API/ServerClipboard_API.csproj'
     PUBLISH_PATH = 'ServerClipboard_API/bin/Release/net8.0/publish'
     ARTIFACT_PATH = 'ServerClipboard_API/Artifact'
-    DEPLOY_DIR = '/var/www/app/ServerClipboardProjects/ServerClipboard_API'
+    DEPLOY_PATH = '/var/www/app/ServerClipboardProjects/ServerClipboard_API'
     DOTNET_ROOT = '/opt/dotnet'
-    PATH = "${env.DOTNET_ROOT}:${env.PATH}"
   }
   post {
     always {
@@ -125,6 +124,9 @@ pipeline {
 
 def TratarErro(Exception e) {
     currentBuild.result = 'FAILURE'
+    echo "--------------------------------------------------------------"
     echo "Deploy failed: ${e.message}"
+    echo "--------------------------------------------------------------"
     error('Deploy failed')
+    echo "--------------------------------------------------------------"
 }
