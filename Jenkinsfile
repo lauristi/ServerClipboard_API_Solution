@@ -6,10 +6,13 @@ pipeline {
         script {
           withCredentials([string(credentialsId: 'JENKINS_TOKEN', variable: 'GITHUB_TOKEN')]) {
             try {
-              sh 'git clone https://${GITHUB_TOKEN}@${env.GIT_REPO}'
-              sh "cd ServerClipboard_API_Solution && git checkout ${env.BRANCH}"
-            } catch (Exception e) {
-              TratarErro(e)
+              sh '''
+                 git clone https://${GITHUB_TOKEN}@${GIT_REPO}
+                cd ServerClipboard_API_Solution
+                git checkout ${BRANCH}
+              ''' 
+             } catch (Exception e) {
+               TratarErro(e)
             }
           }
         }
