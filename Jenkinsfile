@@ -50,7 +50,7 @@ pipeline {
                         sh '''
                             echo "02- Restore Dependencies" | tee -a ${LOG_FILE}
                             ${env.DOTNET_ROOT}/dotnet --version | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet restore ${env.PROJECT_NAME} | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet restore ${PROJECT_NAME} | tee -a ${LOG_FILE}
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -65,7 +65,7 @@ pipeline {
                     try {
                         sh '''
                             echo "03- Build Project" | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet build ${env.PROJECT_NAME} --no-restore --configuration Debug | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet build ${PROJECT_NAME} --no-restore --configuration Debug | tee -a ${LOG_FILE}
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -80,7 +80,7 @@ pipeline {
                     try {
                         sh '''
                             echo "04- Test" | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet test ${env.PROJECT_NAME} --no-build --verbosity normal | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet test ${PROJECT_NAME} --no-build --verbosity normal | tee -a ${LOG_FILE}
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -95,7 +95,7 @@ pipeline {
                     try {
                         sh '''
                             echo "05- Publish" | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH_ARCHIVE} -c Release -o ${env.PUBLISH_PATH} | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet publish ${PROJECT_PATH_ARCHIVE} -c Release -o ${PUBLISH_PATH} | tee -a ${LOG_FILE}
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -110,10 +110,10 @@ pipeline {
                     try {
                         sh '''
                             echo "06- Package Artifacts" | tee -a ${LOG_FILE}
-                            mkdir -p ${env.ARTIFACT_PATH}
-                            cp -r ${env.PUBLISH_PATH}/* ${env.ARTIFACT_PATH}/ | tee -a ${LOG_FILE}
+                            mkdir -p ${ARTIFACT_PATH}
+                            cp -r ${PUBLISH_PATH}/* ${ARTIFACT_PATH}/ | tee -a ${LOG_FILE}
                         '''
-                        archiveArtifacts artifacts: "${env.ARTIFACT_PATH}/**", allowEmptyArchive: true
+                        archiveArtifacts artifacts: "${ARTIFACT_PATH}/**", allowEmptyArchive: true
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -127,8 +127,8 @@ pipeline {
                     try {
                         sh '''
                             echo "07- Deploy on server" | tee -a ${LOG_FILE}
-                            sudo -S cp -r "${env.ARTIFACT_PATH}"/* "${env.DEPLOY_PATH}/" && echo "Copy succeeded" || echo "Copy failed"
-                            sudo chown -R www-data:www-data "${env.DEPLOY_PATH}/" && echo "Chown succeeded" || echo "Chown failed"
+                            sudo -S cp -r "${ARTIFACT_PATH}"/* "${DEPLOY_PATH}/" && echo "Copy succeeded" || echo "Copy failed"
+                            sudo chown -R www-data:www-data "${DEPLOY_PATH}/" && echo "Chown succeeded" || echo "Chown failed"
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -141,7 +141,7 @@ pipeline {
     post {
         always {
             script {
-                archiveArtifacts artifacts: "${env.LOG_FILE}", allowEmptyArchive: true
+                archiveArtifacts artifacts: "${LOG_FILE}", allowEmptyArchive: true
                 cleanWs()
             }
         }
