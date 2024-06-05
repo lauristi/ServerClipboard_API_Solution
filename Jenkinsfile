@@ -6,6 +6,7 @@ pipeline {
         GIT_REPO = 'github.com/lauristi/ServerClipboard_API_Solution.git'
         BRANCH = 'master'
         PROJECT_NAME = 'ServerClipboard_API'
+        SOLUTION_PATH = 'ServerClipboard_API_Solution'
         PROJECT_PATH_ARCHIVE = 'ServerClipboard_API/ServerClipboard_API.csproj'
         PUBLISH_PATH = 'ServerClipboard_API/bin/Release/net8.0/publish'
         ARTIFACT_PATH = 'ServerClipboard_API/Artifact'
@@ -16,17 +17,14 @@ pipeline {
     stages {
 
         stage('clean') {
-        steps {
+            steps {
                 script {
                     // Remove o diretório existente se ele já existir
                     // Limpar diretório de builds antigos
                     // Limpar diretório de artefatos antigos
-                    sh '''
-                        sh rm -rf ServerClipboard_API_Solution
-                        sh rm -rf build/*
-                        sh rm -rf artifacts/*
-                   ''' 
-
+                    sh "rm -rf ${SOLUTION_PATH}"
+                    sh "rm -rf ${PUBLISH_PATH}/*"
+                    sh "rm -rf ${ARTIFACT_PATH}/*"
                 }
             }
         }
