@@ -15,16 +15,15 @@ pipeline {
     }
 
     stages {
-
         stage('clean') {
             steps {
                 script {
                     // Remove o diretório existente se ele já existir
                     // Limpar diretório de builds antigos
                     // Limpar diretório de artefatos antigos
-                    sh "rm -rf ${SOLUTION_PATH}"
-                    sh "rm -rf ${PUBLISH_PATH}/*"
-                    sh "rm -rf ${ARTIFACT_PATH}/*"
+                    sh "rm -rf ${env.SOLUTION_PATH}"
+                    sh "rm -rf ${env.PUBLISH_PATH}/*"
+                    sh "rm -rf ${env.ARTIFACT_PATH}/*"
                 }
             }
         }
@@ -34,11 +33,11 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'JENKINS_TOKEN', variable: 'GITHUB_TOKEN')]) {
                         try {
-                            sh '''
+                            sh """
                                 git clone https://${GITHUB_TOKEN}@${GIT_REPO}
-                                cd ServerClipboard_API_Solution
+                                cd ${env.SOLUTION_PATH}
                                 git checkout ${BRANCH}
-                            ''' 
+                            """ 
                         } catch (Exception e) {
                             TratarErro(e)
                         }
@@ -51,10 +50,10 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh '''
+                        sh """
                             ${env.DOTNET_ROOT}/dotnet --version 
-                            ${env.DOTNET_ROOT}/dotnet restore ${PROJECT_NAME} 
-                        '''
+                            ${env.DOTNET_ROOT}/dotnet restore ${env.PROJECT_NAME} 
+                        """
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -66,9 +65,9 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh '''
-                            ${env.DOTNET_ROOT}/dotnet build ${PROJECT_NAME} --no-restore --configuration Debug 
-                        '''
+                        sh """
+                            ${env.DOTNET_ROOT}/dotnet build ${env.PROJECT_NAME} --no-restore --configuration Debug 
+                        """
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -80,9 +79,9 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh '''
-                            ${env.DOTNET_ROOT}/dotnet test ${PROJECT_NAME} --no-build --verbosity normal 
-                        '''
+                        sh """
+                            ${env.DOTNET_ROOT}/dotnet test ${env.PROJECT_NAME} --no-build --verbosity normal 
+                        """
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -94,9 +93,9 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh '''
-                            ${env.DOTNET_ROOT}/dotnet publish ${PROJECT_PATH_ARCHIVE} -c Release -o ${PUBLISH_PATH} 
-                        '''
+                        sh """
+                            ${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH_ARCHIVE} -c Release -o ${env.PUBLISH_PATH} 
+                        """
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -108,11 +107,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh '''
-                            mkdir -p ${ARTIFACT_PATH}
-                            cp -r ${PUBLISH_PATH}/* ${ARTIFACT_PATH}/ 
-                        '''
-                        archiveArtifacts artifacts: "${ARTIFACT_PATH}/**", allowEmptyArchive: true
+                        sh """
+                            mkdir -p ${env.ARTIFACT_PATH}
+                            cp -r ${env.PUBLISH_PATH}/* ${env.ARTIFACT_PATH}/ 
+                        """
+                        archiveArtifacts artifacts: "${env.ARTIFACT_PATH}/**", allowEmptyArchive: true
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -124,10 +123,10 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh '''
-                            sudo -S cp -r "${ARTIFACT_PATH}"/* "${DEPLOY_PATH}/" && echo "Copy succeeded" || echo "Copy failed"
-                            sudo chown -R www-data:www-data "${DEPLOY_PATH}/" && echo "Chown succeeded" || echo "Chown failed"
-                        '''
+                        sh """
+                            sudo -S cp -r "${env.ARTIFACT_PATH}"/* "${env.DEPLOY_PATH}/" && echo "Copy succeeded" || echo "Copy failed"
+                            sudo chown -R www-data:www-data "${env.DEPLOY_PATH}/" && echo "Chown succeeded" || echo "Chown failed"
+                        """
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -139,7 +138,7 @@ pipeline {
     post {
         always {
             script {
-                archiveArtifacts artifacts: "${LOG_FILE}", allowEmptyArchive: true
+                archiveArtifacts artifacts: "${env.LOG_FILE}", allowEmptyArchive: true
                 cleanWs()
             }
         }
