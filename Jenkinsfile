@@ -19,12 +19,14 @@ pipeline {
         steps {
                 script {
                     // Remove o diretório existente se ele já existir
-                    sh "rm -rf ServerClipboard_API_Solution"
                     // Limpar diretório de builds antigos
-                    sh "rm -rf build/*"
                     // Limpar diretório de artefatos antigos
-                    sh "rm -rf artifacts/*"
-                    // Adicione aqui outras limpezas necessárias
+                    sh '''
+                        sh rm -rf ServerClipboard_API_Solution
+                        sh rm -rf build/*
+                        sh rm -rf artifacts/*
+                   ''' 
+
                 }
             }
         }
@@ -35,7 +37,6 @@ pipeline {
                     withCredentials([string(credentialsId: 'JENKINS_TOKEN', variable: 'GITHUB_TOKEN')]) {
                         try {
                             sh '''
-                                echo "01- Checkout" | tee -a ${LOG_FILE}
                                 git clone https://${GITHUB_TOKEN}@${GIT_REPO}
                                 cd ServerClipboard_API_Solution
                                 git checkout ${BRANCH}
@@ -53,9 +54,8 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            echo "02- Restore Dependencies" | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet --version | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet restore ${PROJECT_NAME} | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet --version 
+                            ${env.DOTNET_ROOT}/dotnet restore ${PROJECT_NAME} 
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -69,8 +69,7 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            echo "03- Build Project" | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet build ${PROJECT_NAME} --no-restore --configuration Debug | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet build ${PROJECT_NAME} --no-restore --configuration Debug 
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -84,8 +83,7 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            echo "04- Test" | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet test ${PROJECT_NAME} --no-build --verbosity normal | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet test ${PROJECT_NAME} --no-build --verbosity normal 
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -99,8 +97,7 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            echo "05- Publish" | tee -a ${LOG_FILE}
-                            ${env.DOTNET_ROOT}/dotnet publish ${PROJECT_PATH_ARCHIVE} -c Release -o ${PUBLISH_PATH} | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet publish ${PROJECT_PATH_ARCHIVE} -c Release -o ${PUBLISH_PATH} 
                         '''
                     } catch (Exception e) {
                         TratarErro(e)
@@ -114,9 +111,8 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            echo "06- Package Artifacts" | tee -a ${LOG_FILE}
                             mkdir -p ${ARTIFACT_PATH}
-                            cp -r ${PUBLISH_PATH}/* ${ARTIFACT_PATH}/ | tee -a ${LOG_FILE}
+                            cp -r ${PUBLISH_PATH}/* ${ARTIFACT_PATH}/ 
                         '''
                         archiveArtifacts artifacts: "${ARTIFACT_PATH}/**", allowEmptyArchive: true
                     } catch (Exception e) {
@@ -131,7 +127,6 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            echo "07- Deploy on server" | tee -a ${LOG_FILE}
                             sudo -S cp -r "${ARTIFACT_PATH}"/* "${DEPLOY_PATH}/" && echo "Copy succeeded" || echo "Copy failed"
                             sudo chown -R www-data:www-data "${DEPLOY_PATH}/" && echo "Chown succeeded" || echo "Chown failed"
                         '''
