@@ -18,8 +18,12 @@ pipeline {
             steps {
                 script {
                     // Define o nome do arquivo de log com data e hora
-                    env.LOG_FILE = "pipeline_${new Date().format('yyyyMMdd_HHmmss')}.log"
-                    echo "Log file: ${env.LOG_FILE}"
+
+                     env.LOG_FILE = "pipeline.log"
+                     echo "Log file: ${env.LOG_FILE}"
+
+                    //env.LOG_FILE = "pipeline_${new Date().format('yyyyMMdd_HHmmss')}.log"
+                    //echo "Log file: ${env.LOG_FILE}"
                 }
                 echo "DEBUG: LOG_FILE is ${env.LOG_FILE}"
             }
