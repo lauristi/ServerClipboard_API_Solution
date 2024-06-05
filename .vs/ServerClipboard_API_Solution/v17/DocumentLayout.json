@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B58006D4-565B-408D-A322-89F6AACC1A3C}|Solution Items{B58006D4-565B-408D-A322-89F6AACC1A3C}|D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Jenkinsfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B58006D4-565B-408D-A322-89F6AACC1A3C}|Solution Items{B58006D4-565B-408D-A322-89F6AACC1A3C}|solutionrelative:Jenkinsfile||{8B382828-6202-11D1-8870-0000F87579D2}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,19 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Jenkinsfile",
-              "DocumentMoniker": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Jenkinsfile",
-              "RelativeDocumentMoniker": "Jenkinsfile",
-              "ToolTip": "D:\\Projeto\\MyRepository\\lauristi\\ServerClipboardProjects\\ServerClipboard_API_Solution\\Jenkinsfile",
-              "RelativeToolTip": "Jenkinsfile",
-              "ViewState": "AQIAAGsAAAAAAAAAAAAqwJ4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-06-05T12:58:22.899Z",
-              "EditorCaption": ""
             }
           ]
         }
