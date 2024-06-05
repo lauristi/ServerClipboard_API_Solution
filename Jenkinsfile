@@ -15,6 +15,20 @@ pipeline {
 
     stages {
 
+        stage('clean') {
+        steps {
+                script {
+                    // Remove o diretório existente se ele já existir
+                    sh "rm -rf ServerClipboard_API_Solution"
+                    // Limpar diretório de builds antigos
+                    sh "rm -rf build/*"
+                    // Limpar diretório de artefatos antigos
+                    sh "rm -rf artifacts/*"
+                    // Adicione aqui outras limpezas necessárias
+                }
+            }
+        }
+
         stage('01- Checkout') {
             steps {
                 script {
