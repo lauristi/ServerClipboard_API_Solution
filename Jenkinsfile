@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         LOG_FILE = ""
         GIT_REPO = 'github.com/lauristi/ServerClipboard_API_Solution.git'
@@ -29,12 +29,12 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'JENKINS_TOKEN', variable: 'GITHUB_TOKEN')]) {
                         try {
-                            echo "01- Checkout" | tee -a $LOG_FILE
                             sh '''
+                                echo "01- Checkout" | tee -a ${LOG_FILE}
                                 git clone https://${GITHUB_TOKEN}@${GIT_REPO}
                                 cd ServerClipboard_API_Solution
                                 git checkout ${BRANCH}
-                            '''
+                            ''' 
                         } catch (Exception e) {
                             TratarErro(e)
                         }
@@ -47,9 +47,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo "02- Restore Dependencies" | tee -a $LOG_FILE
-                        sh "${env.DOTNET_ROOT}/dotnet --version"
-                        sh "${env.DOTNET_ROOT}/dotnet restore ${env.PROJECT_NAME}"
+                        sh '''
+                            echo "02- Restore Dependencies" | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet --version | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet restore ${env.PROJECT_NAME} | tee -a ${LOG_FILE}
+                        '''
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -61,8 +63,10 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo "03- Build Project" | tee -a $LOG_FILE
-                        sh "${env.DOTNET_ROOT}/dotnet build ${env.PROJECT_NAME} --no-restore --configuration Debug"
+                        sh '''
+                            echo "03- Build Project" | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet build ${env.PROJECT_NAME} --no-restore --configuration Debug | tee -a ${LOG_FILE}
+                        '''
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -74,8 +78,10 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo "04- Test" | tee -a $LOG_FILE
-                        sh "${env.DOTNET_ROOT}/dotnet test ${env.PROJECT_NAME} --no-build --verbosity normal"
+                        sh '''
+                            echo "04- Test" | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet test ${env.PROJECT_NAME} --no-build --verbosity normal | tee -a ${LOG_FILE}
+                        '''
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -87,8 +93,10 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo "05- Publish" | tee -a $LOG_FILE
-                        sh "${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH_ARCHIVE} -c Release -o ${env.PUBLISH_PATH}"
+                        sh '''
+                            echo "05- Publish" | tee -a ${LOG_FILE}
+                            ${env.DOTNET_ROOT}/dotnet publish ${env.PROJECT_PATH_ARCHIVE} -c Release -o ${env.PUBLISH_PATH} | tee -a ${LOG_FILE}
+                        '''
                     } catch (Exception e) {
                         TratarErro(e)
                     }
@@ -100,11 +108,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo "06- Package Artifacts" | tee -a $LOG_FILE
-                        sh """
+                        sh '''
+                            echo "06- Package Artifacts" | tee -a ${LOG_FILE}
                             mkdir -p ${env.ARTIFACT_PATH}
-                            cp -r ${env.PUBLISH_PATH}/* ${env.ARTIFACT_PATH}/
-                        """
+                            cp -r ${env.PUBLISH_PATH}/* ${env.ARTIFACT_PATH}/ | tee -a ${LOG_FILE}
+                        '''
                         archiveArtifacts artifacts: "${env.ARTIFACT_PATH}/**", allowEmptyArchive: true
                     } catch (Exception e) {
                         TratarErro(e)
@@ -117,11 +125,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo "07- Deploy on server" | tee -a $LOG_FILE
-                        sh """
+                        sh '''
+                            echo "07- Deploy on server" | tee -a ${LOG_FILE}
                             sudo -S cp -r "${env.ARTIFACT_PATH}"/* "${env.DEPLOY_PATH}/" && echo "Copy succeeded" || echo "Copy failed"
                             sudo chown -R www-data:www-data "${env.DEPLOY_PATH}/" && echo "Chown succeeded" || echo "Chown failed"
-                        """
+                        '''
                     } catch (Exception e) {
                         TratarErro(e)
                     }
